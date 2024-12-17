@@ -3,10 +3,16 @@ import shutil
 from CONSTS import *
 
 def checkPath():
+    '''
+    Checks if the path with folders exists. If not, creates it.
+    '''
     if not os.path.exists(FOLDER_PATH):
         os.makedirs(FOLDER_PATH)
 
 def createNewFolder(folder_name):
+    '''
+    Creates new folder in a local path Folders/folder_name, where folder_name is an user input. 
+    '''
     checkPath()
     os.chdir(FOLDER_PATH)
     try:
@@ -19,6 +25,9 @@ def createNewFolder(folder_name):
     os.chdir("..")
 
 def printFolders():
+    '''
+    Prints out the directory of all folders in the Folders/ directory
+    '''
     checkPath()
     folders = os.walk(FOLDER_PATH)
     for folder in folders:
@@ -26,6 +35,9 @@ def printFolders():
     print("")
 
 def renameFolder(old_folder, new_folder):
+    '''
+    Renames folder name with a new one provided by the user. If original folder doesn't exists, nothing change and prints out error info.
+    '''
     checkPath()
     folders = os.walk(FOLDER_PATH)
     for folder in folders:
@@ -37,6 +49,9 @@ def renameFolder(old_folder, new_folder):
     return False
 
 def removeFolder(folder_name):
+    '''
+    Checks if folder name exists and removes the folder if it does.
+    '''
     checkPath()
     folders = os.walk(FOLDER_PATH)
     for folder in folders:
@@ -72,5 +87,6 @@ while True:
 
     elif option == "5" or option == "five" or option == "exit":
         exit()
+
     else:
         print("Please input correct number.")
